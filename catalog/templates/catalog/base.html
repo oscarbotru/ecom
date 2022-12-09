@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <ul>
+        <li>
+            <a href="{% url 'catalog:list' %}">Список продуктов</a>
+        </li>
+        <li>
+            <a href="{% url 'catalog:create' %}">Создать товар </a>
+        </li>
+    </ul>
+</div>
+{% block content %}
+    {% block new %}
+        {% block sub %}
+        {% endblock %}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

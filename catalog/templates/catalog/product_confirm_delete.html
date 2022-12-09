@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <p>
+    Уверены, что хотите удалить товар "{{ object.title }}"?
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">подтвердить</button>
+    </form>
+    <a href="{% url 'catalog:list' %}">передумал</a>
+{% endblock %}

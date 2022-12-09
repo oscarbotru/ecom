@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="row mt-5">
+        {% for item in object_list %}
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="/media/{{ item.preview }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <p class="card-text">{{ item.body|slice:5 }}...</p>
+                        <a href="{% url 'blog:detail' item.pk %}" class="btn btn-primary">Читать далее</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <hr>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link"
+                                         href="{% url 'blog:list' %}?page={{ page_obj.previous_page_number }}">Назад</a>
+                </li>
+            {% endif %}
+            <li class="page-item"><a class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.count }}</a></li>
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="{% url 'blog:list' %}?page={{ page_obj.next_page_number }}">Вперед</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}

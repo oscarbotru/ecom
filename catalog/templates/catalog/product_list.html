@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<h1>{{ page_title }}</h1>
+    <table>
+        {% for object in object_list %}
+            <tr>
+                <td>{{ object.title }}</td>
+                <td><a href="{% url 'catalog:details' object.pk %}">просмотр</a></td>
+                <td><a href="{% url 'catalog:update' object.pk %}">изменить</a></td>
+                <td><a href="{% url 'catalog:delete' object.pk %}">удалить</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

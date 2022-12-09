@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <img class="card-img-top w-25" src="/media/{{ object.preview }}" alt="Card image cap">
+                <hr>
+                <div class="card-body">
+                    {{ object.body }}
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'blog:like' object.pk %}" class="btn {% if is_liked %}btn-info{% else %}btn-outline-info{% endif %}">
+                        {% if is_liked %}больше не нравится{% else %}нравится{% endif %}
+                    </a>
+                    <span class="btn btn-info">{{ object.likes }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
